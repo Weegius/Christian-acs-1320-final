@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React from "react";
+import { Flex, SimpleGrid } from "@chakra-ui/react";
+import Header from "./components/header.js";
+import Band from "./components/band";
+import data from './metal.json'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Flex flexDir={'column'}>
+        <Header />
+        <SimpleGrid columnGap={5} mt={10} rowGap={20} columns={[1, 2, 3, 3]} >
+        {data.map((band, index) => (
+          <Band key={index} band={band} />
+        ))}
+        </SimpleGrid>
+      </Flex>
+    </>
   );
 }
 
